@@ -1,103 +1,71 @@
-import Image from "next/image";
+import React from 'react'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="h-screen w-screen flex flex-col font-sans bg-gray-50">
+      {/* 顶部工具栏 */}
+      <header className="h-14 flex items-center px-6 bg-white border-b shadow-sm">
+        <div className="flex gap-4">
+          <button className="px-3 py-1 rounded bg-blue-600 text-white">新建</button>
+          <button className="px-3 py-1 rounded bg-gray-200">保存</button>
+          <button className="px-3 py-1 rounded bg-gray-200">导入</button>
+          <button className="px-3 py-1 rounded bg-gray-200">导出</button>
+          <button className="px-3 py-1 rounded bg-gray-200">撤销</button>
+          <button className="px-3 py-1 rounded bg-gray-200">重做</button>
+          <button className="px-3 py-1 rounded bg-gray-200">导入Markdown</button>
         </div>
+      </header>
+      {/* 主体区域 */}
+      <main className="flex flex-1 overflow-hidden">
+        {/* 左侧页面缩略图栏 */}
+        <aside className="w-36 bg-white border-r flex flex-col items-center py-4 gap-2">
+          <div className="font-bold mb-2">页面缩略图</div>
+          <div className="flex flex-col gap-2 w-full items-center">
+            {/* 占位缩略图 */}
+            <div className="w-24 h-16 bg-gray-200 rounded shadow-inner" />
+            <div className="w-24 h-16 bg-gray-200 rounded shadow-inner" />
+            <button className="w-24 h-8 bg-blue-100 text-blue-700 rounded mt-2">+ 新建页面</button>
+          </div>
+        </aside>
+        {/* 中央SVG画布编辑区 */}
+        <section className="flex-1 flex items-center justify-center bg-gray-100">
+          <svg
+            width="640"
+            height="360"
+            className="bg-white border shadow rounded"
+            style={{ minWidth: 320, minHeight: 180 }}
+          >
+            <rect
+              x="40"
+              y="40"
+              width="200"
+              height="80"
+              fill="#e0e7ff"
+              stroke="#6366f1"
+              strokeWidth="2"
+            />
+            <text
+              x="140"
+              y="90"
+              textAnchor="middle"
+              alignmentBaseline="middle"
+              fontSize="20"
+              fill="#6366f1"
+            >
+              SVG 画布区
+            </text>
+          </svg>
+        </section>
+        {/* 右侧属性面板 */}
+        <aside className="w-64 bg-white border-l flex flex-col p-4 gap-4">
+          <div className="font-bold mb-2">属性面板</div>
+          <div className="flex flex-col gap-2">
+            <div className="h-8 bg-gray-100 rounded" />
+            <div className="h-8 bg-gray-100 rounded" />
+            <div className="h-8 bg-gray-100 rounded" />
+          </div>
+        </aside>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
